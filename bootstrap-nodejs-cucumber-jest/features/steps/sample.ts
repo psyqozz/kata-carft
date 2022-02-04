@@ -1,10 +1,29 @@
-import { When, Then } from 'cucumber'
+import { When, Then, Given } from 'cucumber'
 import { expect } from 'chai'
+import { sampleGame, spareGame } from '../../src/sampleGame'
 
-When('I want to log {string}', function (log: string) {
-  this.log = log
+Given('the player score {string}', function(rolls: string){
+  this.rolls = rolls;
 })
 
-Then('the response equals {string}', function (log: string) {
-  expect(log).to.equals(this.log)
+When('we finish the game', function () {
+    this.score = sampleGame(this.rolls);
 })
+
+Then('the total is {int}', function (score: number) {
+  expect(this.score).to.equals(score)
+})
+
+Given('the player score {string}', function(rolls: string){
+  this.rolls = rolls;
+})
+
+When('we finish the game', function () {
+    this.score = spareGame(this.rolls);
+})
+
+Then('the total is {int}', function (score: number) {
+  expect(this.score).to.equals(score)
+})
+
+

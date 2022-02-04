@@ -1,3 +1,447 @@
-0 scenarios
-0 steps
-0m00.000s
+Feature: American Ten-Pin Bowling
+
+  @Game
+  Scenario Outline: Simple game of bowling
+    Given the plyer score '34,9-,22,--,15,52,--,11,33,43'
+    When we finish the game
+    Then the total is 48
+
+  @Game
+  Scenario Outline: Simple game of bowling with spare
+    Given the plyer score '5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/1'
+    When we finish the game
+    And each spare turn was increase by the first roll of the next turn
+    ? undefined
+    Then the total is 141
+    - skipped
+
+  @Game
+  Scenario Outline: Simple game of bowling with strike
+    Given score board
+    ? undefined
+    And the player score X X X X X X X X X 9/0
+    ? undefined
+    And each strike turn was increase by the next two rolls
+    ? undefined
+    Then the total is 267
+    - skipped
+
+  @Game
+  Scenario Outline: Simple game of bowling with spare at the last turn
+    Given ten frames with two rolls each
+    ? undefined
+    And the player score 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5
+    ? undefined
+    And the score of last turn is spare
+    ? undefined
+    And one roll was added after the last turn
+    ? undefined
+    And each spare turn was increase by the next roll
+    ? undefined
+    Then the total is 150
+    - skipped
+
+  @Game
+  Scenario Outline: Simple game of bowling with strike at the last turn
+    Given Score board
+    ? undefined
+    And the player score X X X X X X X X X X X X
+    ? undefined
+    And the score of last turn is strike
+    ? undefined
+    And two rolls was added after the last turn
+    ? undefined
+    And each strike turn was increase by the next two rolls
+    ? undefined
+    Then the total is 300
+    - skipped
+
+Warnings:
+
+1) Scenario: Simple game of bowling with spare # features/sample.feature:23
+   ✔ Given the plyer score '5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/1' # features/steps/sample.ts:5
+   ✔ When we finish the game # features/steps/sample.ts:9
+   ? And each spare turn was increase by the first roll of the next turn
+       Undefined. Implement with the following snippet:
+
+         When('each spare turn was increase by the first roll of the next turn', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   - Then the total is 141 # features/steps/sample.ts:13
+
+2) Scenario: Simple game of bowling with strike # features/sample.feature:34
+   ? Given score board
+       Undefined. Implement with the following snippet:
+
+         Given('score board', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And the player score X X X X X X X X X 9/0
+       Undefined. Implement with the following snippet:
+
+         Given('the player score X X X X X X X X X {int}\/{int}', function (int, int2) {
+         // Given('the player score X X X X X X X X X {int}\/{float}', function (int, float) {
+         // Given('the player score X X X X X X X X X {float}\/{int}', function (float, int) {
+         // Given('the player score X X X X X X X X X {float}\/{float}', function (float, float2) {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And each strike turn was increase by the next two rolls
+       Undefined. Implement with the following snippet:
+
+         Given('each strike turn was increase by the next two rolls', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   - Then the total is 267 # features/steps/sample.ts:13
+
+3) Scenario: Simple game of bowling with spare at the last turn # features/sample.feature:47
+   ? Given ten frames with two rolls each
+       Undefined. Implement with the following snippet:
+
+         Given('ten frames with two rolls each', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And the player score 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5
+       Undefined. Implement with the following snippet:
+
+         Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, int7, int8, int9, int10, int11) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, int7, int8, int9, int10, float) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, int7, int8, int9, float, int10) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, int7, int8, int9, float, float2) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, int7, int8, float, int9, int10) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, int7, int8, float, int9, float2) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, int7, int8, float, float2, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, int7, int8, float, float2, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, int7, float, int8, int9, int10) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, int7, float, int8, int9, float2) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, int7, float, int8, float2, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, int7, float, int8, float2, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, int7, float, float2, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, int7, float, float2, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, int7, float, float2, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, int7, float, float2, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, float, int7, int8, int9, int10) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, float, int7, int8, int9, float2) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, float, int7, int8, float2, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, float, int7, int8, float2, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, float, int7, float2, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, float, int7, float2, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, float, int7, float2, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, float, int7, float2, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, float, float2, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, float, float2, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, float, float2, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, float, float2, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, int6, float, float2, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, int6, float, float2, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, int6, float, float2, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, int6, float, float2, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, int6, int7, int8, int9, int10) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, int6, int7, int8, int9, float2) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, int6, int7, int8, float2, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, int6, int7, int8, float2, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, int6, int7, float2, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, int6, int7, float2, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, int6, int7, float2, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, int6, int7, float2, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, int6, float2, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, int6, float2, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, int6, float2, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, int6, float2, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, int6, float2, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, int6, float2, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, int6, float2, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, int6, float2, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, float2, int6, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, float2, int6, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, float2, int6, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, float2, int6, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, float2, int6, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, float2, int6, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, float2, int6, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, float2, int6, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, float2, float3, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, float2, float3, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, float2, float3, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, float2, float3, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, int5, float, float2, float3, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, int5, float, float2, float3, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, int5, float, float2, float3, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, int5, float, float2, float3, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, int6, int7, int8, int9, int10) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, int6, int7, int8, int9, float2) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, int6, int7, int8, float2, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, int6, int7, int8, float2, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, int6, int7, float2, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, int6, int7, float2, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, int6, int7, float2, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, int6, int7, float2, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, int6, float2, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, int6, float2, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, int6, float2, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, int6, float2, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, int6, float2, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, int6, float2, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, int6, float2, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, int6, float2, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, float2, int6, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, float2, int6, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, float2, int6, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, float2, int6, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, float2, int6, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, float2, int6, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, float2, int6, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, float2, int6, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, float2, float3, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, float2, float3, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, float2, float3, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, float2, float3, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, int5, float2, float3, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, int5, float2, float3, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, int5, float2, float3, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, int5, float2, float3, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, int5, int6, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, int5, int6, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, int5, int6, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, int5, int6, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, int5, int6, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, int5, int6, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, int5, int6, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, int5, int6, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, int5, float3, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, int5, float3, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, int5, float3, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, int5, float3, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, int5, float3, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, int5, float3, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, int5, float3, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, int5, float3, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, float3, int5, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, float3, int5, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, float3, int5, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, float3, int5, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, float3, int5, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, float3, int5, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, float3, int5, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, float3, int5, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, float3, float4, int5, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, float3, float4, int5, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, float3, float4, int5, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, float3, float4, int5, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, int4, float, float2, float3, float4, float5, int5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, int4, float, float2, float3, float4, float5, int5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, int4, float, float2, float3, float4, float5, float6, int5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, int4, float, float2, float3, float4, float5, float6, float7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, int6, int7, int8, int9, int10) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, int6, int7, int8, int9, float2) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, int6, int7, int8, float2, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, int6, int7, int8, float2, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, int6, int7, float2, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, int6, int7, float2, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, int6, int7, float2, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, int6, int7, float2, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, int6, float2, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, int6, float2, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, int6, float2, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, int6, float2, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, int6, float2, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, int6, float2, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, int6, float2, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, int6, float2, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, float2, int6, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, float2, int6, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, float2, int6, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, float2, int6, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, float2, int6, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, float2, int6, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, float2, int6, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, float2, int6, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, float2, float3, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, float2, float3, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, float2, float3, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, float2, float3, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, int5, float2, float3, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, int5, float2, float3, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, int5, float2, float3, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, int5, float2, float3, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, int5, int6, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, int5, int6, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, int5, int6, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, int5, int6, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, int5, int6, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, int5, int6, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, int5, int6, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, int5, int6, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, int5, float3, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, int5, float3, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, int5, float3, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, int5, float3, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, int5, float3, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, int5, float3, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, int5, float3, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, int5, float3, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, float3, int5, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, float3, int5, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, float3, int5, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, float3, int5, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, float3, int5, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, float3, int5, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, float3, int5, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, float3, int5, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, float3, float4, int5, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, float3, float4, int5, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, float3, float4, int5, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, float3, float4, int5, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, int4, float2, float3, float4, float5, int5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, int4, float2, float3, float4, float5, int5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, int4, float2, float3, float4, float5, float6, int5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, int4, float2, float3, float4, float5, float6, float7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, int5, int6, int7, int8, int9) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, int5, int6, int7, int8, float3) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, int5, int6, int7, float3, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, int5, int6, int7, float3, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, int5, int6, float3, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, int5, int6, float3, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, int5, int6, float3, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, int5, int6, float3, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, int5, float3, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, int5, float3, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, int5, float3, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, int5, float3, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, int5, float3, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, int5, float3, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, int5, float3, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, int5, float3, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, float3, int5, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, float3, int5, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, float3, int5, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, float3, int5, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, float3, int5, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, float3, int5, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, float3, int5, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, float3, int5, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, float3, float4, int5, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, float3, float4, int5, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, float3, float4, int5, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, float3, float4, int5, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, int4, float3, float4, float5, int5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, int4, float3, float4, float5, int5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, int4, float3, float4, float5, float6, int5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, int4, float3, float4, float5, float6, float7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, int4, int5, int6, int7, int8) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, int4, int5, int6, int7, float4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, int4, int5, int6, float4, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, int4, int5, int6, float4, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, int4, int5, float4, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, int4, int5, float4, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, int4, int5, float4, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, int4, int5, float4, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, int4, float4, int5, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, int4, float4, int5, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, int4, float4, int5, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, int4, float4, int5, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, int4, float4, float5, int5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, int4, float4, float5, int5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, int4, float4, float5, float6, int5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, int4, float4, float5, float6, float7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, float4, int4, int5, int6, int7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, float4, int4, int5, int6, float5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, float4, int4, int5, float5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, float4, int4, int5, float5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, float4, int4, float5, int5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, float4, int4, float5, int5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, float4, int4, float5, float6, int5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, float4, int4, float5, float6, float7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, float4, float5, int4, int5, int6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, float4, float5, int4, int5, float6) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, float4, float5, int4, float6, int5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, float4, float5, int4, float6, float7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{int}', function (int, int2, int3, float, float2, float3, float4, float5, float6, int4, int5) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {int}\/{float}', function (int, int2, int3, float, float2, float3, float4, float5, float6, int4, float7) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{int}', function (int, int2, int3, float, float2, float3, float4, float5, float6, float7, int4) {
+         // Given('the player score {int}\/ {int}\/ {int}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/ {float}\/{float}', function (int, int2, int3, float, float2, float3, float4, float5, float6, float7, float8) {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And the score of last turn is spare
+       Undefined. Implement with the following snippet:
+
+         Given('the score of last turn is spare', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And one roll was added after the last turn
+       Undefined. Implement with the following snippet:
+
+         Given('one roll was added after the last turn', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And each spare turn was increase by the next roll
+       Undefined. Implement with the following snippet:
+
+         Given('each spare turn was increase by the next roll', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   - Then the total is 150 # features/steps/sample.ts:13
+
+4) Scenario: Simple game of bowling with strike at the last turn # features/sample.feature:60
+   ? Given Score board
+       Undefined. Implement with the following snippet:
+
+         Given('Score board', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And the player score X X X X X X X X X X X X
+       Undefined. Implement with the following snippet:
+
+         Given('the player score X X X X X X X X X X X X', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And the score of last turn is strike
+       Undefined. Implement with the following snippet:
+
+         Given('the score of last turn is strike', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And two rolls was added after the last turn
+       Undefined. Implement with the following snippet:
+
+         Given('two rolls was added after the last turn', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   ? And each strike turn was increase by the next two rolls
+       Undefined. Implement with the following snippet:
+
+         Given('each strike turn was increase by the next two rolls', function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+
+   - Then the total is 300 # features/steps/sample.ts:13
+
+5 scenarios (4 undefined, 1 passed)
+23 steps (14 undefined, 4 skipped, 5 passed)
+0m00.001s
